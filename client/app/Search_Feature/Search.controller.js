@@ -27,6 +27,7 @@
 
 		  // if coming back from the edit page, restore the last search
 		  if ($stateParams && $stateParams.refresh==true) {
+		  window.alert("666",JSON.stringify(GroceryService.stash));
 			  if (GroceryService.stash.brandSearchString) {
 				  vm.brandSearchString=GroceryService.stash.brandSearchString;
 			     search("brand");
@@ -39,6 +40,7 @@
 			  }
 		  }
 		  else {
+		  window.alert("777");
 		     // no parameters provided, so start with a blank page
 			  init();
 		  }
@@ -58,19 +60,20 @@
 			  GroceryService.stash.nameSearchString=vm.nameSearchString;
 			  GroceryService.stash.multiSearchString=vm.multiSearchString;
 		     window.alert("xxxx");
-			  // pass current search along to edit view, so that it can return it back to this view when done
 		     $state.go("fancy_edit",{id:groc_id});
 		  }
 
-        function search(searchField) {
+        function search(searchField,direction) {
 				var p=null;
+				var dir='a';
+				if (direction) dir=direction;
 				if (searchField=="brand") {
-					p=GroceryService.retrieveGroceries(searchField,vm.brandSearchString);
+					p=GroceryService.retrieveGroceries(searchField,vm.brandSearchString,dir);
 				}
 				else if (searchField=="name") {
-					p=GroceryService.retrieveGroceries(searchField,vm.nameSearchString);
+					p=GroceryService.retrieveGroceries(searchField,vm.nameSearchString,dir);
 				} else if (searchField=="multi") {
-					p=GroceryService.retrieveGroceries(searchField,vm.multiSearchString);
+					p=GroceryService.retrieveGroceries(searchField,vm.multiSearchString,dir);
 				}
 
 				p.then(function (results) {

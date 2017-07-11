@@ -25,8 +25,15 @@
 					type="button"
 					class="btn btn-info form-control"
 					ng-disabled="SearchForm.$invalid"
-					ng-click="ctrl.search('multi')">
-					Search
+					ng-click="ctrl.search('multi','a')">
+					Search Ascending
+				</button>
+				<button
+					type="button"
+					class="btn btn-info form-control"
+					ng-disabled="SearchForm.$invalid"
+					ng-click="ctrl.search('multi','d')">
+					Search Descending
 				</button>
 		  </div>
 		  <hr></hr>
@@ -46,8 +53,15 @@
 					type="button"
 					class="btn btn-info form-control"
 					ng-disabled="SearchForm.$invalid"
-					ng-click="ctrl.search('brand')">
-					Search
+					ng-click="ctrl.search('brand','a')">
+					Search Ascending
+				</button>
+				<button
+					type="button"
+					class="btn btn-info form-control"
+					ng-disabled="SearchForm.$invalid"
+					ng-click="ctrl.search('brand','d')">
+					Search Descending
 				</button>
 		  </div>
 		  <br>
@@ -67,8 +81,15 @@
 					type="button"
 					class="btn btn-info form-control"
 					ng-disabled="SearchForm.$invalid"
-					ng-click="ctrl.search('name')">
-					Search
+					ng-click="ctrl.search('name','a')">
+					Search Ascending
+				</button>
+				<button
+					type="button"
+					class="btn btn-info form-control"
+					ng-disabled="SearchForm.$invalid"
+					ng-click="ctrl.search('name','d')">
+					Search Descending
 				</button>
 		  </div>
     </form>

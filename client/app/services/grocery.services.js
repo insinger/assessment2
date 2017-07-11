@@ -41,14 +41,20 @@
             });
         }
 
-        function retrieveGroceries(searchField,term) {
+        function retrieveGroceries(searchField,term,direction) {
 				var searchString="";
 				var params={};
+				var dir='a';
+				if (direction) dir=direction;
 				if (searchField=="brand" || searchField=="name") {
 					params[searchField]=term;
+					params["orderfield"]=searchField;
+					params["orderdirection"]=dir;
 				} else {
 					params["brand"]=term;
 					params["name"]=term;
+					params["orderfield"]="brand";
+					params["orderdirection"]=dir;
 				}
             return $http({
                 method: 'GET',
