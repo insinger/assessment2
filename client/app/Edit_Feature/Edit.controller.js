@@ -54,6 +54,7 @@
 		  }
 
 		  function cancel() {
+		     go_to_search_page();
 		  }
 
 		  // function to switch view 
