@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MAIN_APP_MODULE">
+<head>
+    <meta charset="utf-8">
+    <title>Groceries App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--CSS files -------------------------------------------------------------->
+    <!--3rd Party CSS -->
+    <!-- Bootstrap core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--Custom CSS -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+</head>
+<body>
+
+<!-- Sets navigation bar classes -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <!-- Defines navigation bar buttons -->
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+					 <!-- hamburger -->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="DDD">Groceries App</a>
+        </div>
+
+        <!-- Collects nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="nav-item active"> <!-- active -->
+                    <a ui-sref="Search" data-toggle="tab" data-target="x">Search<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a ui-sref="Edit" data-toggle="tab" data-target="x">Edit<span class="sr-only">(search)</span></a>
+                </li>
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- Place the HTML fragments here -->
+<ui-view></ui-view>
+
+
+<!-- JS files -------------------------------------------------------------->
+<!-- 3rd Party Dependencies -->
+<!-- jquery should always be loaded before bootstrap -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<!--Load angular-messages AFTER Angular-->
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+<!--Load angular-animate-->
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<!--Load angular-ui-router-->
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<!--Custom Scripts -->
+<!--Load the js file that contains the MAIN_APP_MODULE module definition-->
+<script src="app/app.js"></script>
+<!--  -->
+<!--Load services -->
+<script src="app/services/grocery.services.js"></script>
+<!--Load controllers -->
+<script src="app/Search_Feature/Search.controller.js"></script>
+<script src="app/Edit_Feature/Edit.controller.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<div ng-controller="BBBctrl as ctrl" class="container">
+    <div class="page-header">
+        <h1>BBB HTML Fragment
+            <small>BBB</small>
+        </h1>
+    </div>
+    <br/>
+
+
+    <form name="BBBform" novalidate ng-submit="ctrl.register()" autocomplete="off">
+
+        <!--Input field for department number-->
+        <div class="form-group"  ng-class="{ 'has-error': BBBform.deptNo.$touched && BBBform.deptNo.$invalid }">
+            <label for="deptNo">Department No:</label>
+            <input type="number" id="deptNo" name="deptNo"
+                   class="form-control"
+                   ng-model="ctrl.department.id"
+                   required>
+            <div class="help-block" ng-messages="BBBform.deptNo.$error" ng-if="BBBform.deptNo.$touched">
+                <p ng-message="required">Department Number Required</p>
+            </div>
+        </div>
+
+        <!--Input field for department name-->
+        <div class="form-group" ng-class="{ 'has-error': BBBform.deptName.$touched && BBBform.deptName.$invalid }">
+            <label for="deptName">Department name:</label>
+            <input type="text" id="deptName" name="deptName"
+                   class="form-control"
+                   ng-model="ctrl.department.name"
+                   ng-minlength="2"
+                   required>
+            <div class="help-block" ng-messages="BBBform.deptName.$error" ng-if="BBBform.deptName.$touched">
+                <p ng-message="required">Department Name Required</p>
+                <p ng-message="minlength">Department Name Too Short</p>
+            </div>
+        </div>
+
+        <!--TODO: 1.1 Add dropdown box. Display first name and last name, but bind emp_no to model.-->
+        <!--Dropdown box for list of employees-->
+        <div class="form-group"
+             ng-class="{ 'has-error': BBBform.deptManager.$touched && BBBform.deptManager.$invalid }">
+            <label for="deptManager">Manager:</label>
+            <!-- In this select box, ng-options displays select box value as employee.first_name +
+            employee.last_name, however the value that is bound to the model (ctrl.department.manager)
+             is the employee.emp_no -->
+            <select id="deptManager" name="deptManager" class="form-control"
+                    ng-options="employee.emp_no as employee.first_name + ' ' + employee.last_name
+                    for employee in ctrl.employees"
+                    ng-model="ctrl.department.manager" required>
+            </select>
+            <div class="help-block" ng-messages="BBBform.deptManager.$error" ng-if="BBBform.deptManager.$touched">
+                <p ng-message="required">Department Manager Required</p>
+            </div>
+        </div>
+
+
+        <!-- Button used to submit data -->
+        <div class="form-group">
+            <button type="submit"
+                    class="btn-success form-control"
+                    ng-disabled="BBBform.$invalid">
+                Register
+            </button>
+
+        </div>
+
+    </form>
+
+    <!--Status messages-->
+    <div class="alert" role="alert" alert-dismissable ng-show="ctrl.status.code"
+         ng-class="{'alert-success': ctrl.status.code == 0, 'alert-danger': ctrl.status.code != 0 }">
+
+        <button class="close" data-dismiss="alert">
+            <!-- data dismiss removes the element. This alert won't show up again before refreshing -->
+            &times;
+        </button>
+
+        <p>Error No: {{ ctrl.status.code + " " + ctrl.status.message }}</p>
+
+    </div>
+</div>

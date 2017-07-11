@@ -1,0 +1,18 @@
+{
+  "name": "MAIN_APP_MODULE",
+  "version": "1.0.0",
+  "description": "MAIN_APP_MODULE description",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Insinger",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mysql2": "^1.3.5",
+    "path": "^0.12.7",
+    "sequelize": "^4.2.1"
+  }
+}

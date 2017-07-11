@@ -1,0 +1,64 @@
+<div class="container" ng-controller="CCCctrl as ctrl">
+
+    <div class="page-header">
+        <h1>CCC HTML Fragment
+            <small>CCC</small>
+        </h1>
+    </div>
+
+    <form name="CCCform" novalidate class="form-inline">
+        <div class="form-group">
+            <input id="searchString"
+                   class="form-control"
+                   size="50"
+                   type="text"
+                   name="searchString"
+                   ng-model="ctrl.searchString"
+                   placeholder="Enter department name or number">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-info form-control" ng-disabled="CCCform.$invalid"
+                    ng-click="ctrl.search()">
+                Search Department
+            </button>
+            <button class="btn btn-info form-control" ng-disabled="CCCform.$invalid"
+                    ng-click="ctrl.searchForManager()">
+                Search with Department Manager Info
+            </button>
+        </div>
+    </form>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Department No</th>
+            <th>Department name</th>
+            <th ng-show="ctrl.showManager">Department Manager Id</th>
+            <th ng-show="ctrl.showManager">Department Manager Name</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="dept in ctrl.departments">
+            <td><a ng-click="ctrl.go_to_fancy_edit(dept.dept_no)">{{dept.dept_no}}</a></td>
+            <!-- <td><a ui&#45;sref="fancy_edit({deptnum:dept.dept_no})">{{dept.dept_no}}</a></td> -->
+            <td>{{ dept.dept_name }}</td>
+            <td>
+            <span ng-show="ctrl.showManager">
+                 <!-- Handles display of departments that have not been assigned any manager -->
+                {{ dept.managers[0] ? dept.managers[0].emp_no : " "}}
+            </span>
+            </td>
+            <td>
+            <span ng-show="ctrl.showManager">
+                 <!-- Handles display of departments that have not been assigned any manager -->
+                {{ dept.managers[0]
+                ? (dept.managers[0].employee.first_name + " " + dept.managers[0].employee.last_name)
+                : " "}}
+            </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
