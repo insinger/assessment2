@@ -28,7 +28,6 @@
 		  // if coming from the search page, populate record
 		  if ($stateParams && $stateParams.id) {
 			  search_by_id(parseInt($stateParams.id));
-		     window.alert("coming from search page. params=","multi:"+$stateParams.multisearch+"brand:"+$stateParams.brandsearch+"name:"+$stateParams.namesearch);
 		  }
 		  else {
 		     // no parameters provided, so start with a blank page
@@ -48,10 +47,8 @@
 				var p=null;
 				p=GroceryService.updateGrocery(vm.id,{id:vm.id,upc12:vm.upc12,brand:vm.brand,name:vm.name});
 				p.then(function (results) {
-					window.alert("Go back to search view");
 					go_to_search_page();
 				}, function (err) {
-					window.alert("Error");
 					console.log("error " + err);
 				});
 		  }
@@ -61,7 +58,6 @@
 
 		  // function to switch view 
 		  function go_to_search_page() {
-		     window.alert("going back to search page.");
 		     $state.go("fancy_search",{refresh:true})
 		  }
 
@@ -70,7 +66,6 @@
 				var p=null;
 				p=GroceryService.retrieveGroceriesByID(id);
 				p.then(function (results) {
-window.alert(JSON.stringify(results));
 					vm.id = results.data.grocery.id;
 					vm.upc12 = results.data.grocery.upc12;
 					vm.brand = results.data.grocery.brand;

@@ -27,7 +27,6 @@
 
 		  // if coming back from the edit page, restore the last search
 		  if ($stateParams && $stateParams.refresh==true) {
-		  window.alert("666",JSON.stringify(GroceryService.stash));
 			  if (GroceryService.stash.brandSearchString) {
 				  vm.brandSearchString=GroceryService.stash.brandSearchString;
 			     search("brand");
@@ -40,7 +39,6 @@
 			  }
 		  }
 		  else {
-		  window.alert("777");
 		     // no parameters provided, so start with a blank page
 			  init();
 		  }
@@ -59,7 +57,6 @@
 			  GroceryService.stash.brandSearchString=vm.brandSearchString;
 			  GroceryService.stash.nameSearchString=vm.nameSearchString;
 			  GroceryService.stash.multiSearchString=vm.multiSearchString;
-		     window.alert("xxxx");
 		     $state.go("fancy_edit",{id:groc_id});
 		  }
 
@@ -77,7 +74,6 @@
 				}
 
 				p.then(function (results) {
-window.alert(JSON.stringify(results));
 					vm.groceries = results.data.groceries;
 				}, function (err) {
 					console.log("error " + err);
